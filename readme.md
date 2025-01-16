@@ -3,7 +3,8 @@
 Pergunta 2 de 2
 Técnica:
 
-1) Observe o trecho de código abaixo: int INDICE = 13, SOMA = 0, K = 0;
+1) Observe o trecho de código abaixo:
+ int INDICE = 13, SOMA = 0, K = 0;
 Enquanto K < INDICE faça { K = K + 1; SOMA = SOMA + K; }
 Imprimir(SOMA);
 Ao final do processamento, qual será o valor da variável SOMA?
@@ -34,3 +35,4 @@ Escreva um programa na linguagem que desejar onde calcule o percentual de repres
 
 IMPORTANTE:
 a) Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser previamente definida no código;
+b) Evite usar funções prontas, como, por exemplo, reverse;
