@@ -1,7 +1,11 @@
 # Teste lógico para Desenvolvedor
 
-Pergunta 2 de 2
-Técnica:
+### Para executar: 
+
+- verifique se o node está instalado na máquina
+- no console execute `npm run start`
+
+### Sobre o teste:
 
 1) Observe o trecho de código abaixo:
  int INDICE = 13, SOMA = 0, K = 0;
