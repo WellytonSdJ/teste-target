@@ -5,8 +5,8 @@
 // Enquanto K < INDICE faça { K = K + 1; SOMA = SOMA + K; }
 // Imprimir(SOMA);
 // Ao final do processamento, qual será o valor da variável SOMA?
+console.log('#1 - SOMATOTAL');
 (function somaTotal() {
-  console.log('#1 - SOMATOTAL')
   let indice = 13
   let soma = 0
   for (let k = 0; k < indice; k++) {
@@ -51,6 +51,7 @@ let entrada = 34;
 // a) Usar o json ou xml disponível como fonte dos dados do faturamento mensal;
 // b) Podem existir dias sem faturamento, como nos finais de semana e feriados. Estes dias devem ser ignorados no cálculo da média;
 
+console.log(`#3 - FATURAMENTOS \n`)
 const faturamento = require('./faturamento.json')
 // eliminando os dias de finais de semana e feriados (item.valor === 0)
 const faturamentos = faturamento.filter(item => item.valor !== 0 && item.diaSemana !== 'sabado' && item.diaSemana !== 'domingo');
@@ -86,4 +87,41 @@ const faturamentos = faturamento.filter(item => item.valor !== 0 && item.diaSema
   console.log(`O maior valor de faturamento foi de R$ ${maiorFaturamento.valor} no dia ${maiorFaturamento.dia}.`)
   console.log(`O número de dias no mês em que o valor de faturamento diário foi superior à média mensal foi de ${diasAcimaMedia} dias.`)
 })()
+
+// 4) Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:
+// • SP – R$67.836,43
+// • RJ – R$36.678,66
+// • MG – R$29.229,88
+// • ES – R$27.165,48
+// • Outros – R$19.849,53
+// Calcula o percentual de representação que cada estado teve dentro do valor total mensal da distribuidora.
+
+
+console.log('#4 - FATURAMENTO MENSAL \n')
+const faturamentoMensal = [
+  { estado: 'SP', valor: 'R$67.836,43' },
+  { estado: 'RJ', valor: 'R$36.678,66' },
+  { estado: 'MG', valor: 'R$29.229,88' },
+  { estado: 'ES', valor: 'R$27.165,48' },
+  { estado: 'Outros', valor: 'R$19.849,53' }
+];
+
+function calcularPercentual(faturamento) {
+  // soma todos os valores de faturamento e guarda na variavel total
+  // o reduce percorre o vetor faturamento e para cada item,
+  // converte o valor para numero (removendo R$ e trocando , por .)
+  // e soma o valor convertido ao acumulador (acc)
+  const total = faturamento.reduce((acc, item) => {
+    const valorNumerico = parseFloat(item.valor.replace('R$', '').replace('.', '').replace(',', '.'));
+    return acc + valorNumerico;
+  }, 0);
+
+  faturamento.forEach(item => {
+    const valorNumerico = parseFloat(item.valor.replace('R$', '').replace('.', '').replace(',', '.'));
+    const percentual = (valorNumerico / total) * 100;
+    console.log(`O percentual de ${item.estado} é ${percentual.toFixed(2)}%`);
+  });
+}
+
+calcularPercentual(faturamentoMensal);
 
